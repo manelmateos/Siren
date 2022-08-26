@@ -146,6 +146,10 @@ extension PresentationManager {
         else {
             // This is a safety precaution to avoid multiple windows from presenting on top of each other.
             cleanUpAlertController()
+            if rules.alertType != .none {
+                // Show again
+                alertController?.show(window: updaterWindow)
+            }
         }
     }
 

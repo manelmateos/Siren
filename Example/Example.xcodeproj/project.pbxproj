@@ -672,7 +672,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Siren/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.privalia.brazil;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Example;
 				PRODUCT_NAME = Example;
 				SWIFT_VERSION = 5.0;
 			};
@@ -688,7 +688,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Siren/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.privalia.brazil;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Example;
 				PRODUCT_NAME = Example;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;

@@ -158,7 +158,7 @@ private extension AppDelegate {
         let siren = Siren.shared
         siren.presentationManager = PresentationManager(forceLanguageLocalization: .portugueseBrazil)
         siren.apiManager = APIManager(data: getDataFrom(json: "itunes.lookup"))
-        siren.rulesManager = RulesManager(globalRules: Rules(promptFrequency: .daily, forAlertType: .skip),
+        siren.rulesManager = RulesManager(globalRules: Rules(promptFrequency: .immediately, forAlertType: .skip),
                                           showAlertAfterCurrentVersionHasBeenReleasedForDays: 0)
 
         siren.wail { results in
