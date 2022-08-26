@@ -38,12 +38,7 @@ public struct PresentationManager {
     var alertController: UIAlertController?
 
     /// The `UIWindow` instance that presents the `SirenViewController`.
-    private var updaterWindow: UIWindow {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = SirenViewController()
-        window.windowLevel = UIWindow.Level.alert + 1
-        return window
-    }
+    private var updaterWindow: UIWindow
 
     /// `PresentationManager`'s public initializer.
     ///
@@ -71,6 +66,15 @@ public struct PresentationManager {
         self.updateButtonTitle = updateButtonTitle
         self.skipButtonTitle = skipButtonTitle
         self.tintColor = tintColor
+        
+        
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = SirenViewController()
+        window.windowLevel = UIWindow.Level.alert + 1
+        
+        let viewController = SirenViewController()
+        window.rootViewController = viewController
+        self.updaterWindow = window
     }
 
     /// The default `PresentationManager`.
@@ -138,7 +142,10 @@ extension PresentationManager {
         // The latter prevents `UIAlertControllers` from appearing on top of each other.
         if rules.alertType != .none && updaterWindow.isHidden {
             alertController?.show(window: updaterWindow)
-
+        }
+        else {
+            // This is a safety precaution to avoid multiple windows from presenting on top of each other.
+            cleanUpAlertController()
         }
     }
 
@@ -220,5 +227,6 @@ extension PresentationManager {
     private func cleanUpAlertController() {
         alertController?.hide(window: self.updaterWindow)
         alertController?.dismiss(animated: false, completion: nil)
+        updaterWindow.resignKey()
     }
 }

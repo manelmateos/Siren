@@ -28,6 +28,9 @@ public struct APIManager {
     /// [List of country codes](https://help.apple.com/app-store-connect/#/dev997f9cf7c)
     ///
     let countryCode: String?
+    
+    /// A data representing the itunes API model (testing purposes)
+    let apiModelData: Data?
 
     /// Initializes `APIManager` to the region or country of an App Store in which the app is available.
     /// By default, all version check requests are performed against the US App Store.
@@ -36,8 +39,10 @@ public struct APIManager {
     /// [List of country codes](https://help.apple.com/app-store-connect/#/dev997f9cf7c)
     ///
     /// - Parameter countryCode: The country code for the App Store in which the app is availabe. Defaults to nil (e.g., the US App Store)
-    public init(countryCode: String? = nil) {
+    /// - Parameter data: Instead of calling itunes API, create this manage from data (testing purposes)
+    public init(countryCode: String? = nil, data: Data? = nil) {
         self.countryCode = countryCode
+        self.apiModelData = data
     }
 
     /// The default `APIManager`.
@@ -56,15 +61,20 @@ extension APIManager {
             return
         }
 
-        do {
-            let url = try makeITunesURL()
-            let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
-            URLSession.shared.dataTask(with: request) { (data, response, error) in
-                URLCache.shared.removeCachedResponse(for: request)
-                self.processVersionCheckResults(withData: data, response: response, error: error, completion: handler)
-            }.resume()
-        } catch {
-            handler?(.failure(.malformedURL))
+        if let data = apiModelData {
+            self.processVersionCheckResults(withData: data, response: nil, error: nil, completion: handler)
+        }
+        else {
+            do {
+                let url = try makeITunesURL()
+                let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+                URLSession.shared.dataTask(with: request) { (data, response, error) in
+                    URLCache.shared.removeCachedResponse(for: request)
+                    self.processVersionCheckResults(withData: data, response: response, error: error, completion: handler)
+                }.resume()
+            } catch {
+                handler?(.failure(.malformedURL))
+            }
         }
     }
 

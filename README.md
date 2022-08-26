@@ -5,6 +5,17 @@
 [![Travis CI Status](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master)](https://travis-ci.org/ArtSabintsev/Siren) ![Documentation](https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg) ![Swift Support](https://img.shields.io/badge/Swift-5.0%2C%204.2%2C%204.1%2C%203.2%2C%203.1%202.3-orange.svg) [![CocoaPods](https://img.shields.io/cocoapods/v/Siren.svg)](https://cocoapods.org/pods/Siren)  [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Accio supported](https://img.shields.io/badge/Accio-supported-0A7CF5.svg?style=flat)](https://github.com/JamitLabs/Accio) [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://swift.org/package-manager/)
 
 ---
+# Privalia Addons (only branch swift5.0)
+
+## PresentationManager.swift
+
+Fixed PresentationManager class to support iOS13+ with Swift 5 version (the UIAlertViewController disappeared just after it was presented due to UIWindow retain cycle problem)
+
+## APIManager.swift
+
+Added support to create itunes API model from json instead of invoking the itunes API URL. It enables testing features instead of changing the bundle version or app ID.
+
+---
 
 # Table of Contents
 - [**Meta**](https://github.com/ArtSabintsev/Siren#meta)

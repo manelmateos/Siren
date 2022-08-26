@@ -35,6 +35,7 @@
 		8EF9F88C224EACB200B20545 /* SirenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F878224EACB200B20545 /* SirenViewController.swift */; };
 		8EF9F88E224EB00100B20545 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF9F853224EACA500B20545 /* Siren.framework */; };
 		8EF9F88F224EB00100B20545 /* Siren.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF9F853224EACA500B20545 /* Siren.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		971CAD3228B7AE140044D30B /* itunes.lookup.json in Resources */ = {isa = PBXBuildFile; fileRef = 971CAD3128B7AE140044D30B /* itunes.lookup.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		8EF9F876224EACB200B20545 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = ../../Sources/Siren.bundle; sourceTree = "<group>"; };
 		8EF9F878224EACB200B20545 /* SirenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenViewController.swift; sourceTree = "<group>"; };
 		8EF9F88D224EACBF00B20545 /* Siren.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Siren.h; sourceTree = "<group>"; };
+		971CAD3128B7AE140044D30B /* itunes.lookup.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = itunes.lookup.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				8EACA96C1F37F2D3003134CA /* Info.plist */,
 				8EACA96D1F37F2D3003134CA /* ViewController.swift */,
 				55EC364A1E6BB98A00726F13 /* Info.plist */,
+				971CAD3128B7AE140044D30B /* itunes.lookup.json */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 			files = (
 				8EACA9711F380294003134CA /* LaunchScreen.xib in Resources */,
 				8EACA9721F380294003134CA /* Main.storyboard in Resources */,
+				971CAD3228B7AE140044D30B /* itunes.lookup.json in Resources */,
 				8EACA9731F380294003134CA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,9 +670,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = HT94948NDD;
 				INFOPLIST_FILE = "$(SRCROOT)/Siren/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.AppStoreConnect;
+				PRODUCT_BUNDLE_IDENTIFIER = com.privalia.brazil;
 				PRODUCT_NAME = Example;
 				SWIFT_VERSION = 5.0;
 			};
@@ -682,9 +686,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = HT94948NDD;
 				INFOPLIST_FILE = "$(SRCROOT)/Siren/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.AppStoreConnect;
+				PRODUCT_BUNDLE_IDENTIFIER = com.privalia.brazil;
 				PRODUCT_NAME = Example;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;

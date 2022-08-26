@@ -26,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        minimalCustomizationPresentationExample()
 //        forceLocalizationCustomizationPresentationExample()
 //        customMessagingPresentationExample()
-        annoyingRuleExample()
+//        annoyingRuleExample()
+        customAnnoyingRuleExample()
 //        hyperCriticalRulesExample()
 //        updateSpecificRulesExample()
 //        customAlertRulesExample()
@@ -138,6 +139,27 @@ private extension AppDelegate {
     func annoyingRuleExample() {
         let siren = Siren.shared
         siren.rulesManager = RulesManager(globalRules: .annoying)
+
+        siren.wail { results in
+            switch results {
+            case .success(let updateResults):
+                print("AlertAction ", updateResults.alertAction)
+                print("Localization ", updateResults.localization)
+                print("Model ", updateResults.model)
+                print("UpdateType ", updateResults.updateType)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    /// How to present an alert every time the app is foregrounded.
+    func customAnnoyingRuleExample() {
+        let siren = Siren.shared
+        siren.presentationManager = PresentationManager(forceLanguageLocalization: .portugueseBrazil)
+        siren.apiManager = APIManager(data: getDataFrom(json: "itunes.lookup"))
+        siren.rulesManager = RulesManager(globalRules: Rules(promptFrequency: .daily, forAlertType: .skip),
+                                          showAlertAfterCurrentVersionHasBeenReleasedForDays: 0)
 
         siren.wail { results in
             switch results {
@@ -264,5 +286,17 @@ private extension AppDelegate {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    private func getDataFrom(json: String) -> Data? {
+        guard let path = Bundle.main.path(forResource: json, ofType: "json") else {
+            print("File \(json).json doesn't exist in bundle.")
+            return nil
+        }
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
+            print("File \(path) is empty.")
+            return nil
+        }
+        return data
     }
 }
